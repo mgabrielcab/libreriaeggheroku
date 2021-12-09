@@ -87,7 +87,7 @@ public class EditorialServicio {
     }
 
     private void validar(String nombre) throws ErrorServicio {
-        if (nombre == null || nombre.isEmpty() || nombre.isBlank()) {
+        if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("Ha ingresado un nombre Invalido");
         }
     }

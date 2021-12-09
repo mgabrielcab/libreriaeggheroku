@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bebas Neue', cursive;
+}
+
+nav{
+    width: 100%;
+    max-height: 20%;
+    display: flex; /*La propiedad de display flex, ayuda a colocar las cajas como si fueran celdas de tablas*/
+    align-items: center;
+    justify-content: space-between;
+    transition: all .5s ease;
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(10px);
+}
+
+.logo a{
+    margin-left: 5px;
+    text-decoration: 0;
+    color: rgb(255, 255, 255);
+    font-size: 2em;
+}
+
+.logo a:hover{
+    background: rgba(0, 0, 0, 0.418);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu li{
+    list-style: none;
+    margin: 20px;
+}
+
+.menu li a{
+    text-decoration: none;
+    text-align: center;
+    font-size: 3vh;
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+   transition: all .5 ease;
+   padding: 15px 5px;
+}
+
+.menu li a:hover{
+    color: black;
+    background: white;
+    border-radius: 15px;
+   /* padding: 5px 10px;*/
+}
+
+body{
+    max-width: 100%;
+    height: 100vh;
+    background-image: url(/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.agregar{
+    position: fixed;
+    font-size: 20px;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 329px;
+    background: green;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.listado-autor{
+    position: absolute;
+    max-width: 400px;
+    max-height: 600px;
+    margin: auto;
+    margin-left: 10px;
+    border-collapse: collapse;
+}
+
+.cabecera th{
+    font-size: 2em;
+    padding: 10px;
+    background: black;
+    color: white;
+    font-weight: 100;
+}
+
+.cuerpo-tabla tr{
+    font-size: 1em;
+    color: rgb(0, 0, 0);
+    background: white;
+}
+
+.cuerpo-tabla td{
+    padding: 5px;
+    text-align: center;
+}
+
+.cuerpo-tabla tr:hover{
+    background: rgb(196, 196, 196);
+    color: white;
+}
+
+.formulario{
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.575);
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.formulario h1{
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+.formulario input{
+    font-size: 25px;
+    padding: 10px;
+    margin-left: 80px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+}
+
+.formulario button{
+    margin-left:130px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    border-radius: 15px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    text-align: center;
+}
+
+.acciones a{
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.agregarlibro{
+    text-decoration: none;
+    background-color:green;
+    border-radius: 10px;
+    font-size: 25px;
+    color: white;
+    padding: 5px;
+    position: fixed;
+    margin-top: 10px;
+    margin-left: 850px;
+}
+
+.agregarautor{
+    text-decoration: none;
+    background-color:green;
+    border-radius: 10px;
+    font-size: 25px;
+    color: white;
+    padding: 5px;
+    position: fixed;
+    margin-top: 10px;
+    margin-left: 380px;
+}
+
+select{
+    position: relative;
+    font-size: 25px;
+    width: 250px;
+    padding: 10px;
+    margin-left: 80px;
+    text-align: center;
+    border-radius: 5px;
+    color: rgb(90, 89, 89);
+}
+
+.nuevo{
+    text-decoration: none;
+    color: white;
+    background: red;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 6px;
+    margin-left: 165px;
+}
+
+.editorial{
+    color: white;
+    font-size: 25px;
+    margin-left: 170px;
+    margin-top: 15px;
+}
+
+.autor{
+    color: white;
+    font-size: 25px;
+    margin-left: 180px;
+    margin-top: 15px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <title>Libreria Oz - Editoriales</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo"><a href="/">Libreria Oz</a></div>
+        <ul class="menu">
+          <li><a th:href="@{/libro/listado}">Libros</a></li>
+          <li><a th:href="@{/autor/listado}">Autores</a></li>
+          <li><a th:href="@{/editorial/listado}">Editoriales</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="content">
+      <table class="listado-autor">
+        <a th:href="@{/editorial/editar-editorial}" class="agregar">Agregar Editorial</a>
+        <thead>
+          <tr class="cabecera">
+            <th>Editorial</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="cuerpo-tabla">
+          <tr th:each="editorial: ${editoriales}">
+            <!--Aca iria los th-->
+            <td th:text="${editorial.nombre}"></td>
+            <td class="acciones">
+              <a th:href="@{/editorial/editar-editorial(id=__${editorial.id}__,accion=Editar)}">Editar</a>
+              <a th:href="@{/editorial/editar-editorial(id=__${editorial.id}__,accion=Eliminar)}">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

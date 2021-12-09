@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <title>Libreria Oz - Crear Libro</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo"><a href="/">Libreria Oz</a></div>
+        <ul class="menu">
+          <li><a th:href="@{/libro/listado}">Libros</a></li>
+          <li><a th:href="@{/autor/listado}">Autores</a></li>
+          <li><a th:href="@{/editorial/listado}">Editoriales</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="content">
+      <form class="formulario">
+        <h1><span th:text="${accion}"></span> Libro</h1>
+        <p class="error" th:if="${error != null}" th:text="${error}"style="color: red"></p>
+        <input type="hidden" name="id" th:value="${libro.id}">
+        <input th:disabled="${accion =='Prestar'||accion=='Devolver'}" th:value="${libro.isbn}" type="text" name="isbn" placeholder="ISBN" /><br />
+        <input th:disabled="${accion =='Prestar'||accion=='Devolver'}" th:value="${libro.titulo}" type="text" name="titulo" placeholder="Titulo" /><br />
+        <input th:disabled="${accion =='Prestar'||accion=='Devolver'}" th:value="${libro.anio}" type="number" name="anio" placeholder="Año" /><br />
+        <input th:if="${accion!='Prestar'&& accion!='Devolver'}" th:value="${libro.ejemplares}" type="number" name="ejemplares" placeholder="Cantidad Stock"/><br />
+        <!--Ingresar aca la cantidad a prestar-->
+        <input th:if="${accion=='Prestar'}" type="number" name="prest" placeholder="Cant. a Prestar">
+        <input th:if="${accion=='Devolver'}" type="number" name="dev" placeholder="Cant. a Devolver">
+        <!--Datos sincronizados-->
+        <label class="autor">Autor</label><br>
+        <select name="autor" th:disabled="${accion =='Prestar'||accion=='Devolver'}">
+          <option   th:if="${accion!='Editar'}" th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}"></option>
+          <option  th:if="${accion=='Editar'||accion=='Eliminar'||accion=='Prestar'||accion=='Devolver'}" th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}" th:selected="${libro.autor != null && autor == libro.autor}"></option>
+        </select>
+        <br>
+        <a class="nuevo" href="#">Crear Autor</a>
+        <br>
+        <label class="editorial">Editorial</label><br>
+        <select name="editorial" th:disabled="${accion =='Prestar'||accion=='Devolver'}">
+          <option th:if="${accion=='Crear'}" th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}"></option>
+          <option th:if="${accion=='Editar'||accion=='Eliminar'||accion=='Prestar'||accion=='Devolver'}" th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}"th:selected="${libro.editorial != null && editorial == libro.editorial}"></option>
+        </select>
+        <br>
+        <a class="nuevo" href="#">Crear editorial</a>
+
+        <button th:if="${accion=='Crear'}" formaction="/libro/actualizar-libro" formmethod="post" type="submit">Crear Libro</button>
+        <button th:if="${accion=='Editar'}" formaction="/libro/actualizar-libro" formmethod="post" type="submit">Editar Libro</button>
+        <button th:if="${accion=='Eliminar'}" formaction="/libro/eliminar-libro" formmethod="post" type="submit">Eliminar Libro</button>
+        <button th:if="${accion=='Prestar'}" formaction="/libro/prestar-libro" formmethod="post" type="submit">Prestar Libro</button>
+        <button th:if="${accion=='Devolver'}" formaction="/libro/devolver-libro" formmethod="post" type="submit">Devolver Libro</button>
+      </form>
+    </div>
+  </body>
+</html>
